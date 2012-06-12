@@ -1,3 +1,5 @@
+set nocompatible	"be incompatible with vi
+
 "UI settings
 set title		"set the xterm window title
 set nu			"show line numbers
@@ -10,5 +12,6 @@ set hlsearch		"highlight search matches
 set ignorecase		"ignore case while searching
 set smartcase		"respect case in search terms
 set incsearch		"highlight matches while typing for a search term
+
 "Text formatting settings
 filetype indent plugin on	"detect file types and allow indentations and plugins
