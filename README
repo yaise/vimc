@@ -6,5 +6,6 @@
 
  	OR
 
-	 - clone this repo at a convinient location in your file system. create a soft link called ".vimrc" that points to the vimrc file in the cloned repo.
-	 - restart vim
+	 - clone this repo at a convenient location in your file system. 
+	 - create a soft link called ".vimrc" that points to the vimrc file in the cloned repo.
+	 - restart vim.
