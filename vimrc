@@ -1,7 +1,7 @@
 set nocompatible	"be incompatible with vi
 
 "Setup pathogen as the plugin manager.
-call pathogen#infect()
+execute pathogen#infect()
 
 "UI settings
 set title			"set the xterm window title

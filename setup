@@ -1,0 +1,23 @@
+#!/bin/bash
+set -eu
+
+VIM_DIR="vim"
+VIM_DIR_BUNDLE="$VIM_DIR/bundle"
+VIM_DIR_AUTOLOAD="$VIM_DIR/autoload"
+
+echo "[SETUP] Setting up the required directories..."
+mkdir -p "$VIM_DIR_BUNDLE"
+mkdir -p "$VIM_DIR_AUTOLOAD"
+
+echo "[SETUP] Downloading latest version of Pathogen..."
+PATHOGEN_LOCATION="https://raw.github.com/tpope/vim-pathogen/master/autoload"
+PATHOGEN_FILE="pathogen.vim"
+curl -So "$PWD/$VIM_DIR_AUTOLOAD/$PATHOGEN_FILE" "$PATHOGEN_LOCATION/$PATHOGEN_FILE"
+
+
+#Should be done right in the end
+echo "[SETUP] Setting up soft links in your home directory"
+ln -fs $PWD/vimrc $HOME/.vimrc
+ln -fs $PWD/vim $HOME/.vim
+
+
