@@ -1,23 +1,33 @@
 #!/bin/bash
 set -eu
 
-VIM_DIR="vim"
-VIM_DIR_BUNDLE="$VIM_DIR/bundle"
-VIM_DIR_AUTOLOAD="$VIM_DIR/autoload"
+function announce {
+	echo -e "\x1B[1;32mINFO:$@ \x1B[0m"
+}
 
-echo "[SETUP] Setting up the required directories..."
+readonly VIM_DIR="vim"
+readonly VIM_DIR_BUNDLE="$VIM_DIR/bundle"
+readonly VIM_DIR_AUTOLOAD="$VIM_DIR/autoload"
+
+announce "Setting up the required directories..."
 mkdir -p "$VIM_DIR_BUNDLE"
 mkdir -p "$VIM_DIR_AUTOLOAD"
 
-echo "[SETUP] Downloading latest version of Pathogen..."
-PATHOGEN_LOCATION="https://raw.github.com/tpope/vim-pathogen/master/autoload"
-PATHOGEN_FILE="pathogen.vim"
-curl -So "$PWD/$VIM_DIR_AUTOLOAD/$PATHOGEN_FILE" "$PATHOGEN_LOCATION/$PATHOGEN_FILE"
+announce "Pathogen Support..."
+readonly PATHOGEN_LOCATION="https://raw.github.com/tpope/vim-pathogen/master/autoload"
+readonly PATHOGEN_FILE="pathogen.vim"
+curl -#So "$PWD/$VIM_DIR_AUTOLOAD/$PATHOGEN_FILE" "$PATHOGEN_LOCATION/$PATHOGEN_FILE"
 
+
+announce "Octave Support..."
+readonly OCTAVE_LINK="http://www.vim.org/scripts/download_script.php?src_id=17308"
+curl -#So "$VIM_DIR_BUNDLE/octave.vim" "$OCTAVE_LINK"
 
 #Should be done right in the end
-echo "[SETUP] Setting up soft links in your home directory"
+announce "Setting up soft links in your home directory..."
 ln -fs $PWD/vimrc $HOME/.vimrc
-ln -fs $PWD/vim $HOME/.vim
+ln -fs $PWD/$VIM_DIR $HOME/.$VIM_DIR
+
+announce "Done"
 
 
