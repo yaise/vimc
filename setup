@@ -23,6 +23,19 @@ announce "Octave Support..."
 readonly OCTAVE_LINK="http://www.vim.org/scripts/download_script.php?src_id=17308"
 curl -#So "$VIM_DIR_BUNDLE/octave.vim" "$OCTAVE_LINK"
 
+VIM_BKP_DIR=$HOME/.vimfiles.bkp
+if [ -e $HOME/.vimrc ]; then
+	announce "Backing up vimrc"
+	mkdir -p $VIM_BKP_DIR
+	mv $HOME/.vimrc $VIM_BKP_DIR/
+fi
+
+if [ -d $HOME/.$VIM_DIR -a ! -L $HOME/.$VIM_DIR ]; then
+	announce "Backing up vim directory"
+	mkdir -p $VIM_BKP_DIR
+	mv $HOME/.$VIM_DIR $VIM_BKP_DIR/
+fi
+
 #Should be done right in the end
 announce "Setting up soft links in your home directory..."
 ln -fs $PWD/vimrc $HOME/.vimrc
