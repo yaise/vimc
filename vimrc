@@ -1,9 +1,20 @@
+"""""""""""""""""""""""""""""""""""""
+"Sources: 
+"http://nvie.com/posts/how-i-boosted-my-vim/
+"http://vimcasts.org
+"http://learnvimscriptthehardway.stevelosh.com/
+"
+"""""""""""""""""""""""""""""""""""""
 set nocompatible	"be incompatible with vi
 
-"Setup pathogen as the plugin manager.
-execute pathogen#infect()
+let mapleader = "'"			"remap leader key
+let maplocalleader = "\\"	"remap local leader key
 
-"UI settings
+"-Setup pathogen as the plugin manager.
+call pathogen#helptags()
+call pathogen#incubate()
+
+"-UI settings
 set title			"set the xterm window title
 set nu				"show line numbers
 set ruler			"turn the ruler on at the bottom of the file
@@ -11,25 +22,38 @@ set laststatus=2	"always show the status line at the bottom of the window. The 2
 set showmode		"show the current mode 
 set showcmd			"show the current command 
 
-"Search settings
+"-Search settings
 set hlsearch		"highlight search matches
 set ignorecase		"ignore case while searching
 set smartcase		"respect case in search terms
 set incsearch		"highlight matches while typing for a search term
 
-"Text formatting settings
+"-Editor settings
 filetype indent plugin on	"detect file types and allow indentations and plugins
-
-"Tabs and indentation settings
+set hidden			"hide buffers, not close them
+set undolevels=1000
 set autoindent
 set tabstop=4
 
-"colors
+"-Colors
 if &t_Co > 1
 		syntax enable
 endif
-"command history
+
+"-Command history
 set history=100
 "what does this do ?
 "set backspace=indent,eol,start
 "set nobackup
+
+"-KEY MAPPINGS
+"
+"--Normal Mode
+"use ; instead of having to press Shift to get to :
+nnoremap ; :
+"define shortcuts to edit and source vimrc files
+nnoremap <leader>ev :vsplit	$MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+"--Insert Mode
+inoremap <c-d> <esc>ddi
+inoremap jk <esc>

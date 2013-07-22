@@ -12,11 +12,10 @@ RESOURCES
 =========
 * http://nvie.com/posts/how-i-boosted-my-vim/
 * https://github.com/tpope/vim-pathogen
-* nerdtree plugin
 * derek wyatt videos - vimeo
 * http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/
+* http://learnvimscriptthehardway.stevelosh.com/
 
 TODO
 ====
-* perl support
 * scala support
