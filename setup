@@ -23,6 +23,12 @@ announce "Octave Support..."
 readonly OCTAVE_LINK="http://www.vim.org/scripts/download_script.php?src_id=17308"
 curl -#So "$VIM_DIR_BUNDLE/octave.vim" "$OCTAVE_LINK"
 
+announce "NERDtree Support..."
+if [ -d $VIM_DIR_BUNDLE/nerdtree ]; then
+		cd $VIM_DIR_BUNDLE/nerdtree; git pull; cd -
+else
+		git clone https://github.com/scrooloose/nerdtree.git $VIM_DIR_BUNDLE/nerdtree
+fi
 VIM_BKP_DIR=$HOME/.vimfiles.bkp
 if [ -e $HOME/.vimrc ]; then
 	announce "Backing up vimrc"
