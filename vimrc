@@ -52,9 +52,10 @@ set history=100
 "use ; instead of having to press Shift to get to :
 nnoremap ; :
 "define shortcuts to edit and source vimrc files
+nnoremap <leader>c :nohlsearch<cr>
+nnoremap <leader>t :NERDTreeToggle<cr>
 nnoremap <leader>ev :vsplit	$MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>t :NERDTree<cr>
 "--Insert Mode
 inoremap <c-d> <esc>ddi
 inoremap jk <esc>
