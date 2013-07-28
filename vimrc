@@ -1,9 +1,12 @@
 """""""""""""""""""""""""""""""""""""
-"Sources: 
-"http://nvie.com/posts/how-i-boosted-my-vim/
-"http://vimcasts.org
-"http://learnvimscriptthehardway.stevelosh.com/
-"
+"Thank you:
+"	Bram Moolenaar for such an awesome editor!
+" 	Authors of:
+"		https://github.com/tpope/vim-pathogen
+"		http://nvie.com/posts/how-i-boosted-my-vim/
+"		http://vimcasts.org
+"		http://learnvimscriptthehardway.stevelosh.com/
+"		http://statico.github.io/vim.html
 """""""""""""""""""""""""""""""""""""
 set nocompatible	"be incompatible with vi
 
@@ -21,6 +24,7 @@ set ruler			"turn the ruler on at the bottom of the file
 set laststatus=2	"always show the status line at the bottom of the window. The 2 is for 'always'
 set showmode		"show the current mode 
 set showcmd			"show the current command 
+set mouse=a			"enable the mouse
 
 "-Search settings
 set hlsearch		"highlight search matches
@@ -29,15 +33,17 @@ set smartcase		"respect case in search terms
 set incsearch		"highlight matches while typing for a search term
 
 "-Editor settings
+set encoding=utf-8
 filetype indent plugin on	"detect file types and allow indentations and plugins
-set hidden			"hide buffers, not close them
-set undolevels=1000
-set autoindent
-set tabstop=4
+set hidden					"hide buffers, not close them
+set undolevels=1000			"undo stack of at most 1000 elements
+set autoindent			
+set tabstop=4				"tab space of 4
 
 "-Colors
-if &t_Co > 1
-		syntax enable
+if &t_Co >=256
+	syntax enable
+	colorscheme mustang2
 endif
 
 "-Command history
@@ -56,6 +62,8 @@ nnoremap <leader>c :nohlsearch<cr>
 nnoremap <leader>t :NERDTreeToggle<cr>
 nnoremap <leader>ev :vsplit	$MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <c-j>  :bnext <cr>
+nnoremap <c-k>  :bprev <cr>
 "--Insert Mode
 inoremap <c-d> <esc>ddi
 inoremap jk <esc>

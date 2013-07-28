@@ -8,15 +8,20 @@ function announce {
 readonly VIM_DIR="vim"
 readonly VIM_DIR_BUNDLE="$VIM_DIR/bundle"
 readonly VIM_DIR_AUTOLOAD="$VIM_DIR/autoload"
+readonly VIM_DIR_COLORS="$VIM_DIR/colors"
 
 announce "Setting up the required directories..."
 mkdir -p "$VIM_DIR_BUNDLE"
 mkdir -p "$VIM_DIR_AUTOLOAD"
+mkdir -p "$VIM_DIR_COLORS"
+
+announce "Downloading Color Themes..."
+curl -#So "$VIM_DIR_COLORS/mustang2.vim" "http://www.vim.org/scripts/download_script.php?src_id=11274"
 
 announce "Pathogen Support..."
 readonly PATHOGEN_LOCATION="https://raw.github.com/tpope/vim-pathogen/master/autoload"
 readonly PATHOGEN_FILE="pathogen.vim"
-curl -#So "$PWD/$VIM_DIR_AUTOLOAD/$PATHOGEN_FILE" "$PATHOGEN_LOCATION/$PATHOGEN_FILE"
+curl -#So "$VIM_DIR_AUTOLOAD/$PATHOGEN_FILE" "$PATHOGEN_LOCATION/$PATHOGEN_FILE"
 
 
 announce "Octave Support..."
@@ -29,7 +34,8 @@ if [ -d $VIM_DIR_BUNDLE/nerdtree ]; then
 else
 		git clone https://github.com/scrooloose/nerdtree.git $VIM_DIR_BUNDLE/nerdtree
 fi
-VIM_BKP_DIR=$HOME/.vimfiles.bkp
+
+readonly VIM_BKP_DIR=$HOME/.vimfiles.bkp
 if [ -e $HOME/.vimrc ]; then
 	announce "Backing up vimrc"
 	mkdir -p $VIM_BKP_DIR
