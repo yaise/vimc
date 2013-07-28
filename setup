@@ -36,7 +36,7 @@ else
 fi
 
 readonly VIM_BKP_DIR=$HOME/.vimfiles.bkp
-if [ -e $HOME/.vimrc ]; then
+if [ -e $HOME/.vimrc -a ! -L $HOME/.vimrc ]; then
 	announce "Backing up vimrc"
 	mkdir -p $VIM_BKP_DIR
 	mv $HOME/.vimrc $VIM_BKP_DIR/
