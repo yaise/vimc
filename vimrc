@@ -33,17 +33,19 @@ set smartcase		"respect case in search terms
 set incsearch		"highlight matches while typing for a search term
 
 "-Editor settings
-set encoding=utf-8
 filetype indent plugin on	"detect file types and allow indentations and plugins
+set encoding=utf-8
 set hidden					"hide buffers, not close them
-set undolevels=1000			"undo stack of at most 1000 elements
-set autoindent			
+set undolevels=1000			"max undo stack size
+set autoindent
 set tabstop=4				"tab space of 4
+set list					"highlight whitespaces
+set listchars=tab:>.,trail:.,extends:#,eol:$
 
 "-Colors
 if &t_Co >=256
 	syntax enable
-	colorscheme mustang2
+	colorscheme mustang
 endif
 
 "-Command history

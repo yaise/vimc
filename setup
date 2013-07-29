@@ -16,7 +16,7 @@ mkdir -p "$VIM_DIR_AUTOLOAD"
 mkdir -p "$VIM_DIR_COLORS"
 
 announce "Downloading Color Themes..."
-curl -#So "$VIM_DIR_COLORS/mustang2.vim" "http://www.vim.org/scripts/download_script.php?src_id=11274"
+curl -#So "$VIM_DIR_COLORS/mustang.vim" "http://www.vim.org/scripts/download_script.php?src_id=11274"
 
 announce "Pathogen Support..."
 readonly PATHOGEN_LOCATION="https://raw.github.com/tpope/vim-pathogen/master/autoload"
@@ -30,9 +30,9 @@ curl -#So "$VIM_DIR_BUNDLE/octave.vim" "$OCTAVE_LINK"
 
 announce "NERDtree Support..."
 if [ -d $VIM_DIR_BUNDLE/nerdtree ]; then
-		cd $VIM_DIR_BUNDLE/nerdtree; git pull; cd -
+	cd $VIM_DIR_BUNDLE/nerdtree; git pull; cd -
 else
-		git clone https://github.com/scrooloose/nerdtree.git $VIM_DIR_BUNDLE/nerdtree
+	git clone https://github.com/scrooloose/nerdtree.git $VIM_DIR_BUNDLE/nerdtree
 fi
 
 readonly VIM_BKP_DIR=$HOME/.vimfiles.bkp
@@ -54,5 +54,3 @@ ln -fs $PWD/vimrc $HOME/.vimrc
 ln -fs $PWD/$VIM_DIR $HOME/.$VIM_DIR
 
 announce "Done"
-
-
