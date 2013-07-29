@@ -19,11 +19,12 @@ call pathogen#incubate()
 
 "-UI settings
 set title			"set the xterm window title
-set nu				"show line numbers
+set relativenumber	"show line numbers
 set ruler			"turn the ruler on at the bottom of the file
 set laststatus=2	"always show the status line at the bottom of the window. The 2 is for 'always'
 set showmode		"show the current mode 
 set showcmd			"show the current command 
+set wildmenu
 
 "-Search settings
 set hlsearch		"highlight search matches
