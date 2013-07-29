@@ -24,7 +24,6 @@ set ruler			"turn the ruler on at the bottom of the file
 set laststatus=2	"always show the status line at the bottom of the window. The 2 is for 'always'
 set showmode		"show the current mode 
 set showcmd			"show the current command 
-set mouse=a			"enable the mouse
 
 "-Search settings
 set hlsearch		"highlight search matches
