@@ -32,13 +32,15 @@ set smartcase		"respect case in search terms
 set incsearch		"highlight matches while typing for a search term
 
 "-Editor settings
-filetype indent plugin on	"detect file types and allow indentations and plugins
+filetype indent plugin on						"detect file types and allow indentations and plugins
 set encoding=utf-8
-set hidden					"hide buffers, not close them
-set undolevels=1000			"max undo stack size
+set hidden										"hide buffers, not close them
+set undolevels=1000								"max undo stack size
 set autoindent
-set tabstop=4				"tab space of 4
-set listchars=tab:>.,trail:.,extends:#,eol:$
+set tabstop=4									"tab space of 4
+set listchars=tab:>.,trail:.,extends:#,eol:$	"change whitespace markers
+set omnifunc=syntaxcomplete#Complete			"enable omni completion
+set completeopt=longest,menuone					"completion options. match longest common text and show menu even if there's just one match
 
 "-Colors
 if &t_Co >=256
@@ -68,3 +70,4 @@ nnoremap <c-k>  :bprev <cr>
 "--Insert Mode
 inoremap <c-d> <esc>ddi
 inoremap jk <esc>
+
