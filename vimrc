@@ -8,16 +8,17 @@
 "		http://learnvimscriptthehardway.stevelosh.com/
 "		http://statico.github.io/vim.html
 """""""""""""""""""""""""""""""""""""
-set nocompatible	"be incompatible with vi
 
+"""""First things First"""""
+set nocompatible			"be incompatible with vi
 let mapleader = "'"			"remap leader key
 let maplocalleader = "\\"	"remap local leader key
 
-"-Setup pathogen as the plugin manager.
+"""""Initialize Pathogen"""""
 call pathogen#helptags()
 call pathogen#incubate()
 
-"-UI settings
+"""""UI settings"""""
 set title			"set the xterm window title
 set relativenumber	"show line numbers
 set ruler			"turn the ruler on at the bottom of the file
@@ -25,13 +26,14 @@ set laststatus=2	"always show the status line at the bottom of the window. The 2
 set showcmd			"show the current command 
 set wildmenu
 
-"-Search settings
+"""""Search settings"""""
 set hlsearch		"highlight search matches
 set ignorecase		"ignore case while searching
 set smartcase		"respect case in search terms
 set incsearch		"highlight matches while typing for a search term
+nnoremap <leader>c :nohlsearch<cr>
 
-"-Editor settings
+"""""Editor settings"""""
 filetype indent plugin on						"detect file types and allow indentations and plugins
 set encoding=utf-8
 set hidden										"hide buffers, not close them
@@ -39,35 +41,36 @@ set undolevels=1000								"max undo stack size
 set autoindent
 set tabstop=4									"tab space of 4
 set listchars=tab:>.,trail:.,extends:#,eol:$	"change whitespace markers
+" Toggle whitespace markers
+nnoremap <leader>w :set list!<cr>
 set omnifunc=syntaxcomplete#Complete			"enable omni completion
 set completeopt=longest,menuone					"completion options. match longest common text and show menu even if there's just one match
 
-"-Colors
+"""""Color settings""""
 if &t_Co >=256
 	syntax enable
 	colorscheme mustang
 endif
 
-"-Command history
-set history=100
-"what does this do ?
-"set backspace=indent,eol,start
-"set nobackup
-
-"-KEY MAPPINGS
-"
-"--Normal Mode
-"use ; instead of having to press Shift to get to :
+"""""Additional Key Mappings"""""
+" Use ; instead of having to press Shift to get to :
 nnoremap ; :
-"define shortcuts to edit and source vimrc files
-nnoremap <leader>c :nohlsearch<cr>
-nnoremap <leader>w :set list!<cr>
-nnoremap <leader>t :NERDTreeToggle<cr>
+
+" Define shortcuts to edit and source vimrc files
 nnoremap <leader>ev :vsplit	$MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
+nnoremap <leader>t :NERDTreeToggle<cr>
+
+" Define shortcuts for next/previous file. 
 nnoremap <c-j>  :bnext <cr>
 nnoremap <c-k>  :bprev <cr>
-"--Insert Mode
+
 inoremap <c-d> <esc>ddi
 inoremap jk <esc>
 
+"""""Misc"""""
+set history=1024
+"what does this do ?
+"set backspace=indent,eol,start
+"set nobackup
