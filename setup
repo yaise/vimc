@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 
-function announce {
+function announce() {
 	echo -e "\x1B[1;32mINFO:$@ \x1B[0m"
 }
 
@@ -18,22 +18,30 @@ mkdir -p "$VIM_DIR_COLORS"
 announce "Downloading Color Themes..."
 curl -#So "$VIM_DIR_COLORS/mustang.vim" "http://www.vim.org/scripts/download_script.php?src_id=11274"
 
+function installViaGithub() {
+	local name=$1
+	local repoUrl=$2
+	if [ -d $VIM_DIR_BUNDLE/$name ]; then
+		cd $VIM_DIR_BUNDLE/$name; git pull; cd -
+	else
+		git clone $repoUrl $VIM_DIR_BUNDLE/$name
+	fi
+}
+
 announce "Pathogen Support..."
 readonly PATHOGEN_LOCATION="https://raw.github.com/tpope/vim-pathogen/master/autoload"
 readonly PATHOGEN_FILE="pathogen.vim"
 curl -#So "$VIM_DIR_AUTOLOAD/$PATHOGEN_FILE" "$PATHOGEN_LOCATION/$PATHOGEN_FILE"
-
 
 announce "Octave Support..."
 readonly OCTAVE_LINK="http://www.vim.org/scripts/download_script.php?src_id=17308"
 curl -#So "$VIM_DIR_BUNDLE/octave.vim" "$OCTAVE_LINK"
 
 announce "NERDtree Support..."
-if [ -d $VIM_DIR_BUNDLE/nerdtree ]; then
-	cd $VIM_DIR_BUNDLE/nerdtree; git pull; cd -
-else
-	git clone https://github.com/scrooloose/nerdtree.git $VIM_DIR_BUNDLE/nerdtree
-fi
+installViaGithub  "nerdtree" "https://github.com/scrooloose/nerdtree.git" 
+
+announce "Emmet Support..."
+installViaGithub "emmet" "http://github.com/mattn/emmet-vim.git"
 
 readonly VIM_BKP_DIR=$HOME/.vimfiles.bkp
 if [ -e $HOME/.vimrc -a ! -L $HOME/.vimrc ]; then
