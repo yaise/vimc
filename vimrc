@@ -16,8 +16,7 @@ let maplocalleader = "\\"	"remap local leader key
 
 """""Initialize Pathogen"""""
 call pathogen#helptags()
-call pathogen#incubate()
-
+call pathogen#infect('bundle/{}')
 """""UI settings"""""
 set title			"set the xterm window title
 set relativenumber	"show line numbers

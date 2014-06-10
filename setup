@@ -29,7 +29,7 @@ function installViaGithub() {
 }
 
 announce "Pathogen Support..."
-readonly PATHOGEN_LOCATION="https://raw.github.com/tpope/vim-pathogen/master/autoload"
+readonly PATHOGEN_LOCATION="https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload"
 readonly PATHOGEN_FILE="pathogen.vim"
 curl -#So "$VIM_DIR_AUTOLOAD/$PATHOGEN_FILE" "$PATHOGEN_LOCATION/$PATHOGEN_FILE"
 
