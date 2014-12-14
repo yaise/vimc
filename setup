@@ -18,7 +18,7 @@ mkdir -p "$VIM_DIR_COLORS"
 announce "Downloading Color Themes..."
 curl -#So "$VIM_DIR_COLORS/mustang.vim" "http://www.vim.org/scripts/download_script.php?src_id=11274"
 
-function installViaGithub() {
+function install_from_git() {
 	local name=$1
 	local repoUrl=$2
 	if [ -d $VIM_DIR_BUNDLE/$name ]; then
@@ -38,10 +38,10 @@ readonly OCTAVE_LINK="http://www.vim.org/scripts/download_script.php?src_id=1730
 curl -#So "$VIM_DIR_BUNDLE/octave.vim" "$OCTAVE_LINK"
 
 announce "NERDtree Support..."
-installViaGithub  "nerdtree" "https://github.com/scrooloose/nerdtree.git" 
+install_from_git  "nerdtree" "https://github.com/scrooloose/nerdtree.git" 
 
 announce "Emmet Support..."
-installViaGithub "emmet" "http://github.com/mattn/emmet-vim.git"
+install_from_git "emmet" "http://github.com/mattn/emmet-vim.git"
 
 readonly VIM_BKP_DIR=$HOME/.vimfiles.bkp
 if [ -e $HOME/.vimrc -a ! -L $HOME/.vimrc ]; then
