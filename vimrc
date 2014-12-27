@@ -62,11 +62,14 @@ nnoremap ; :
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-nnoremap <leader>t :NERDTreeToggle<cr>
-
 " Define shortcuts for next/previous file. 
 nnoremap <c-j>  :bnext <cr>
 nnoremap <c-k>  :bprev <cr>
 
 inoremap <c-d> <esc>ddi
 inoremap jk <esc>
+
+" NerdTree.
+nnoremap <leader>t :NERDTreeToggle<cr>
+
+let g:airline#extensions#tabline#enabled=1

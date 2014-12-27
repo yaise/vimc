@@ -46,6 +46,9 @@ install_from_git "emmet" "http://github.com/mattn/emmet-vim.git"
 announce "Vim Airline..."
 install_from_git "vim-airline" "https://github.com/bling/vim-airline"
 
+announce "CtrlP"
+install_from_git "ctrlp" "https://github.com/kien/ctrlp.vim"
+
 readonly VIM_BKP_DIR=$HOME/.vimfiles.bkp
 if [ -e $HOME/.vimrc -a ! -L $HOME/.vimrc ]; then
 	announce "Backing up vimrc"
