@@ -43,6 +43,9 @@ install_from_git  "nerdtree" "https://github.com/scrooloose/nerdtree.git"
 announce "Emmet Support..."
 install_from_git "emmet" "http://github.com/mattn/emmet-vim.git"
 
+announce "Vim Airline..."
+install_from_git "vim-airline" "https://github.com/bling/vim-airline"
+
 readonly VIM_BKP_DIR=$HOME/.vimfiles.bkp
 if [ -e $HOME/.vimrc -a ! -L $HOME/.vimrc ]; then
 	announce "Backing up vimrc"
