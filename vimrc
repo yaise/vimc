@@ -70,9 +70,3 @@ nnoremap <c-k>  :bprev <cr>
 
 inoremap <c-d> <esc>ddi
 inoremap jk <esc>
-
-"""""Misc"""""
-set history=1024
-"what does this do ?
-"set backspace=indent,eol,start
-"set nobackup
