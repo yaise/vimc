@@ -58,9 +58,12 @@ endif
 " Use ; instead of having to press Shift to get to :
 nnoremap ; :
 
-" Define shortcuts to edit and source vimrc files
+" Define shortcuts to edit vimrc files
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+augroup reload_vimrc
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source %
+augroup END
 
 " Define shortcuts for next/previous file. 
 nnoremap <c-j>  :bnext <cr>
