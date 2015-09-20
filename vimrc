@@ -51,7 +51,8 @@ autocmd FileType html,css EmmetInstall
 """""Color settings""""
 if &t_Co >=256
     syntax enable
-    colorscheme mustang
+    set background=dark
+    colorscheme solarized
 endif
 
 """""Additional Key Mappings"""""

@@ -33,6 +33,9 @@ readonly PATHOGEN_LOCATION="https://raw.githubusercontent.com/tpope/vim-pathogen
 readonly PATHOGEN_FILE="pathogen.vim"
 curl -#So "$VIM_DIR_AUTOLOAD/$PATHOGEN_FILE" "$PATHOGEN_LOCATION/$PATHOGEN_FILE"
 
+announce "Solarized Theme..."
+install_from_git "vim-colors-solarized" "git://github.com/altercation/vim-colors-solarized.git"
+
 announce "Octave Support..."
 readonly OCTAVE_LINK="http://www.vim.org/scripts/download_script.php?src_id=17308"
 curl -#So "$VIM_DIR_BUNDLE/octave.vim" "$OCTAVE_LINK"
