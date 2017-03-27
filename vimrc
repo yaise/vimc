@@ -52,6 +52,7 @@ autocmd FileType html,css EmmetInstall
 if &t_Co >=256
     syntax enable
     set background=dark
+    let g:solarized_termcolors = 256
     colorscheme solarized
 endif
 
