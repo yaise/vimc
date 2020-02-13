@@ -2,7 +2,7 @@
 set -eu
 
 function announce() {
-	echo -e "\x1B[1;32mINFO:$@ \x1B[0m"
+	echo "\x1B[1;32mINFO:$@ \x1B[0m"
 }
 
 readonly VIM_DIR="vim"
