@@ -9,8 +9,7 @@
 "       http://statico.github.io/vim.html
 """""""""""""""""""""""""""""""""""""
 
-"""""First things First"""""
-set nocompatible            "be incompatible with vi
+et nocompatible            "be incompatible with vi
 let mapleader = "'"         "remap leader key
 let maplocalleader = "\\"   "remap local leader key
 

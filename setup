@@ -21,6 +21,7 @@ curl -#So "$VIM_DIR_COLORS/mustang.vim" "http://www.vim.org/scripts/download_scr
 function install_from_git() {
 	local name=$1
 	local repoUrl=$2
+    announce $name
 	if [ -d $VIM_DIR_BUNDLE/$name ]; then
 		cd $VIM_DIR_BUNDLE/$name; git pull; cd -
 	else
@@ -33,24 +34,23 @@ readonly PATHOGEN_LOCATION="https://raw.githubusercontent.com/tpope/vim-pathogen
 readonly PATHOGEN_FILE="pathogen.vim"
 curl -#So "$VIM_DIR_AUTOLOAD/$PATHOGEN_FILE" "$PATHOGEN_LOCATION/$PATHOGEN_FILE"
 
-announce "Solarized Theme..."
 install_from_git "vim-colors-solarized" "git://github.com/altercation/vim-colors-solarized.git"
 
-announce "Octave Support..."
-readonly OCTAVE_LINK="http://www.vim.org/scripts/download_script.php?src_id=17308"
-curl -#So "$VIM_DIR_BUNDLE/octave.vim" "$OCTAVE_LINK"
+#announce "Octave Support..."
+#readonly OCTAVE_LINK="http://www.vim.org/scripts/download_script.php?src_id=17308"
+#curl -#So "$VIM_DIR_BUNDLE/octave.vim" "$OCTAVE_LINK"
 
-announce "NERDtree Support..."
 install_from_git  "nerdtree" "https://github.com/scrooloose/nerdtree.git" 
 
-announce "Emmet Support..."
-install_from_git "emmet" "http://github.com/mattn/emmet-vim.git"
+#announce "Emmet Support..."
+#install_from_git "emmet" "http://github.com/mattn/emmet-vim.git"
 
-announce "Vim Airline..."
 install_from_git "vim-airline" "https://github.com/bling/vim-airline"
 
-announce "CtrlP"
 install_from_git "ctrlp" "https://github.com/kien/ctrlp.vim"
+
+install_from_git "node" "https://github.com/moll/vim-node.git"
+
 
 readonly VIM_BKP_DIR=$HOME/.vimfiles.bkp
 if [ -e $HOME/.vimrc -a ! -L $HOME/.vimrc ]; then
@@ -68,6 +68,6 @@ fi
 #Should be done right in the end
 announce "Setting up soft links in your home directory..."
 ln -fs $PWD/vimrc $HOME/.vimrc
-ln -fs $PWD/$VIM_DIR $HOME/.$VIM_DIR
+#ln -fs $PWD/$VIM_DIR $HOME/.$VIM_DIR
 
 announce "Done"
